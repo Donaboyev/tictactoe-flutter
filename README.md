@@ -2,7 +2,7 @@
 Simple tic tac toe flutter application. 
 
 ## Featues of the application
-<img src="https://user-images.githubusercontent.com/56734609/114802052-6e980f80-9db6-11eb-9a6d-e1104adbe1a2.gif" width="400" heigth="730" />  
+<img src="https://user-images.githubusercontent.com/56734609/116657243-8cb16280-a9a7-11eb-90bb-25367ceef369.gif" width="400" heigth="730" />  
 
 [<img src="https://user-images.githubusercontent.com/56734609/114071381-7ccbc480-98ba-11eb-959f-674cb3a25e1e.png" width="200" height="200">](https://www.youtube.com/watch?v=wOY_BBBW9lQ "On Youtube")
 
