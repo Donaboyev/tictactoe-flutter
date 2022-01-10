@@ -6,9 +6,10 @@ class GameButton {
   Color backgroundColor;
   bool enabled;
 
-  GameButton(
-      {this.id,
-      this.text = "",
-      this.backgroundColor = Colors.grey,
-      this.enabled = true});
+  GameButton({
+    this.id,
+    this.text = "",
+    this.backgroundColor = Colors.grey,
+    this.enabled = true,
+  });
 }

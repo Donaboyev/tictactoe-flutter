@@ -11,13 +11,13 @@ class CustomDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new AlertDialog(
-      title: new Text(title),
-      content: new Text(content),
+    return AlertDialog(
+      title: Text(title),
+      content: Text(content),
       actions: <Widget>[
-        new TextButton(
+        TextButton(
           onPressed: callback,
-          child: new Text(actionText),
+          child: Text(actionText),
           style: TextButton.styleFrom(primary: Colors.black),
         ),
       ],

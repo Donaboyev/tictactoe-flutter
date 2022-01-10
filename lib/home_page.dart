@@ -1,8 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:tictactoe/custom_dialog.dart';
-import 'package:tictactoe/game_button.dart';
+
+import 'custom_dialog.dart';
+import 'game_button.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -59,9 +60,13 @@ class _HomePageState extends State<HomePage> {
         if (winner == -1) {
           if (buttonsList.every((p) => p.text != "")) {
             showDialog(
-                context: context,
-                builder: (_) => new CustomDialog("Game tied",
-                    "Press the reset button to start again.", resetGame));
+              context: context,
+              builder: (_) => CustomDialog(
+                "Game tied",
+                "Press the reset button to start again.",
+                resetGame,
+              ),
+            );
           } else {
             activePlayer == 2 ? autoPlay() : null;
           }
@@ -139,14 +144,20 @@ class _HomePageState extends State<HomePage> {
       if (winner == 1) {
         showDialog(
           context: context,
-          builder: (_) => new CustomDialog("Player 1 won",
-              "Press the reset button to start again.", resetGame),
+          builder: (_) => new CustomDialog(
+            "Player 1 won",
+            "Press the reset button to start again.",
+            resetGame,
+          ),
         );
       } else {
         showDialog(
           context: context,
-          builder: (_) => new CustomDialog("Player 2 won",
-              "Press the reset button to start again.", resetGame),
+          builder: (_) => new CustomDialog(
+            "Player 2 won",
+            "Press the reset button to start again.",
+            resetGame,
+          ),
         );
       }
     }
@@ -162,40 +173,40 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
-      appBar: new AppBar(
-        title: Text("Tic tac toe"),
+      appBar: AppBar(
+        title: const Text("Tic tac toe"),
         backgroundColor: Colors.lightBlue,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(15.0)),
         ),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          new Expanded(
-            child: new GridView.builder(
+          Expanded(
+            child: GridView.builder(
               padding: const EdgeInsets.all(10.0),
-              gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  childAspectRatio: 1.0,
-                  crossAxisSpacing: 9.0,
-                  mainAxisSpacing: 9.0),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                childAspectRatio: 1.0,
+                crossAxisSpacing: 9.0,
+                mainAxisSpacing: 9.0,
+              ),
               itemCount: buttonsList.length,
-              itemBuilder: (context, i) => new SizedBox(
+              itemBuilder: (context, i) => SizedBox(
                 width: 100.0,
                 height: 100.0,
                 child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: new ElevatedButton(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
                     onPressed: buttonsList[i].enabled
                         ? () => playGame(buttonsList[i])
                         : null,
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<OutlinedBorder>(
-                        StadiumBorder(),
+                        const StadiumBorder(),
                       ),
                       backgroundColor: MaterialStateProperty.resolveWith<Color>(
                         (Set<MaterialState> states) {
@@ -203,31 +214,35 @@ class _HomePageState extends State<HomePage> {
                             return Colors.indigo;
                           else if (states.contains(MaterialState.disabled))
                             return buttonsList[i].backgroundColor;
-                          return Colors.blue; // Use the component's default.
+                          return Colors.blue;
                         },
                       ),
                     ),
-                    child: new Text(
+                    child: Text(
                       buttonsList[i].text,
-                      style: new TextStyle(color: Colors.white, fontSize: 20.0),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
           ),
-          new ElevatedButton(
-            child: new Text(
-              "Reset",
-              style: new TextStyle(color: Colors.white, fontSize: 20.0),
+          ElevatedButton(
+            child: Text(
+              'Reset',
+              style: const TextStyle(color: Colors.white, fontSize: 20.0),
             ),
             onPressed: resetGame,
             style: ElevatedButton.styleFrom(
-                primary: Colors.blueGrey,
-                padding: EdgeInsets.all(20.0),
-                shape: const RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(16.0)))),
+              primary: Colors.blueGrey,
+              padding: EdgeInsets.all(20.0),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
+              ),
+            ),
           ),
         ],
       ),
